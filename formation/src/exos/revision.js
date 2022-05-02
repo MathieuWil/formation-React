@@ -65,12 +65,23 @@ export const displayStudentName = ({ firstname, lastname, age }) => {
  * Exporter la fonction et importer puis tester
  * dans le fichier `index.js`
  */
-export const array1 = student.notes
-export const map1 = array1.map(x => ' ' + x + '/20')
 
-export const displayNotes = array1 => {
-  return map1.toString()
+export function displayNotesClassique(notes) {
+  let formatedNotes = []
+
+  for (let note of notes) {
+    if (note < 10) {
+      formatedNotes.push(`0${note}/20`)
+    } else {
+      formatedNotes.push(`${note}/20`)
+    }
+  }
+
+  return formatedNotes.join(', ')
 }
+
+export const displayNotes = notes =>
+  notes.map(note => (note < 10 ? `0${note}/20` : `${note}/20`)).join(', ')
 
 /**
  * Exo 5
@@ -86,16 +97,18 @@ export const displayNotes = array1 => {
  * dans le fichier `index.js`
  */
 
-export const initialValue = 0
-export let sumWithInitial = array1.reduce(
-  (previousValue, currentValue) => previousValue + currentValue,
-  initialValue,
-)
+export function calculateAverageClassique(notes) {
+  let total = 0
 
-export let calculateAverage = () => {
-  sumWithInitial = sumWithInitial / array1.length
-  return sumWithInitial
+  for (let note of notes) {
+    total += note
+  }
+
+  return total / notes.length
 }
+
+export const calculateAverage = notes =>
+  notes.reduce((accumulator, note) => accumulator + note, 0) / notes.length
 
 /**
  * Exo 6
@@ -108,3 +121,9 @@ export let calculateAverage = () => {
  * notes : 12/20, 13/20, 18/20, 09/20, 08/20, 15/20
  * moyenne : 12,5/20
  */
+
+export const displayStudent = ({ firstname, lastname, age, notes }) => `
+ ${displayStudentName({ firstname, lastname, age })}
+ notes : ${displayNotes(notes)}
+ moyenne : ${calculateAverage(notes)} / 20
+`
