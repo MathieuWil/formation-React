@@ -1,5 +1,5 @@
-console.log("Application react");
+console.log('Application react')
 
 if (true) {
-  console.log("waw");
+  console.log('waw')
 }
