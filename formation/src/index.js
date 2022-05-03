@@ -2,7 +2,10 @@ import {
   bonjour,
   bonjour2,
   calculateAverage,
+  calculateAverageClassique,
   displayNotes,
+  displayNotesClassique,
+  displayStudent,
   displayStudentName,
   student,
 } from './exos/revision'
@@ -17,7 +20,10 @@ console.log(bonjour2('Mathieu2'))
 console.log(displayStudentName(student))
 
 // Exercice 4
-console.log(displayNotes())
+console.log(displayNotesClassique(student.notes))
 
 // Exercice 5
-console.log(calculateAverage())
+console.log(calculateAverageClassique(student.notes))
+
+// Exercice 6
+console.log(displayStudent(student))
