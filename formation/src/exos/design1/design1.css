@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #703c3c;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #544f73;
+    height: 100vh;
+}
+
+footer {
+    background-color: #355a38;
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+

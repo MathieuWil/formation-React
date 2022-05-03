@@ -1,0 +1,15 @@
+.rectanglebleu {
+    width: 0 auto;
+    height: 60px;
+    margin: 30px 30px;
+    background-color: rgb(29, 79, 128);
+}
+
+.recmarron {
+    position: absolute;
+    background-color: blanchedalmond;
+    right: 14px;
+    bottom: 14px;
+    width: 50px;
+    height: 50px;
+}
