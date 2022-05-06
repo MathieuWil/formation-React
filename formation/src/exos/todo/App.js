@@ -1,17 +1,46 @@
-import React from 'react'
-import Addcase from './Addcase'
-import { Box, Input, Add, Dobox } from './styled'
+import React, { useState } from 'react'
+import {
+  AddTodoButton,
+  InputText,
+  RemoveTodoButton,
+  Todo,
+  TodoInput,
+  TodoLabel,
+} from './styled'
 
 export default function App() {
+  const [newTodo, setNewTodo] = useState('')
+  const [todoList, setTodoList] = useState([''])
+
+  const changeNewTodo = ev => {
+    setNewTodo(ev.target.value)
+  }
+
+  const addTodo = () => {
+    setTodoList([newTodo, ...todoList])
+    setNewTodo('')
+  }
+
+  const removeTodo = index =>
+    setTodoList(todoList.filter((todo, i) => i !== index))
+
   return (
     <>
-      <Box>
-        <Input></Input>
-        <Add onClick={Addcase}>
-          <i class="fa-solid fa-circle-plus fa-2xl"></i>
-        </Add>
-      </Box>
-      <Dobox></Dobox>
+      <TodoInput>
+        <InputText value={newTodo} onChange={changeNewTodo} />
+        <AddTodoButton onClick={addTodo}>
+          <i className="fa-solid fa-circle-plus fa-2xl"></i>
+        </AddTodoButton>
+      </TodoInput>
+
+      {todoList.map((todo, index) => (
+        <Todo key={`todo-${index}`}>
+          <TodoLabel>{todo}</TodoLabel>
+          <RemoveTodoButton onClick={() => removeTodo(index)}>
+            <i class="fa-solid fa-trash fa-2xl"></i>
+          </RemoveTodoButton>
+        </Todo>
+      ))}
     </>
   )
 }
